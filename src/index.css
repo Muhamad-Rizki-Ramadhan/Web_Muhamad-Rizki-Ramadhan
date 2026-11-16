@@ -3,8 +3,8 @@
 
 :root {
   font-family: 'DM Sans', sans-serif;
-  color: #f5f5f5;
-  background: #090b10;
+  color: #28253b;
+  background: #fbfaff;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 }
@@ -17,11 +17,16 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 88px;
 }
 
 body {
   min-width: 320px;
   min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 8% 12%, rgb(226 218 255 / 45%), transparent 34rem),
+    radial-gradient(ellipse at 92% 54%, rgb(255 230 216 / 38%), transparent 30rem),
+    #fbfaff;
 }
 
 a {
@@ -32,4 +37,19 @@ a {
 button,
 a {
   font: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #7657f6;
+  outline-offset: 4px;
+}
+
+::selection {
+  color: #fff;
+  background: #7657f6;
 }
