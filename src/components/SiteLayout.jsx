@@ -1,46 +1,37 @@
-import { Outlet } from 'react-router-dom';
-import { portfolio } from '../data/portfolio.js';
+import { Outlet, useLocation } from 'react-router-dom';
+import { portfolioData } from '../data/portfolioData.ts';
 import Navbar from './Navbar.jsx';
 
 const currentYear = new Date().getFullYear();
 
 function ContactFooter() {
   return (
-    <footer className="site-footer" id="contact">
-      <div className="footer-inner">
+    <footer className="site-footer">
+      <div className="footer-inner page-shell">
         <div className="footer-intro">
-          <p className="eyebrow">GET IN TOUCH</p>
-          <h2>Let&apos;s connect.</h2>
+          <p className="eyebrow"></p>
+          <h2>Let&apos;s connect<span>.</span></h2>
           <p>
-            Tertarik berdiskusi tentang teknologi, cybersecurity, atau
-            kolaborasi? Hubungi saya melalui informasi yang tersedia.
+            Interested in cybersecurity, technology, or a future collaboration?
+            Find my contact details on the contact page.
           </p>
         </div>
-        <div className="contact-list" aria-label="Informasi kontak">
-          {portfolio.contacts.map(({ label, value, href }) => (
-            <div className="contact-item" key={label}>
-              <span className="contact-label">{label}</span>
-              {href ? (
-                <a href={href} target="_blank" rel="noreferrer">{value}</a>
-              ) : (
-                <span className="contact-placeholder">{value}</span>
-              )}
-            </div>
-          ))}
-        </div>
+        <p className="footer-coordinate">JAKARTA, INDONESIA <span>|</span> {currentYear}</p>
       </div>
       <p className="copyright">
-        © {currentYear} {portfolio.name}. Built with React.
+        &copy; {currentYear} {portfolioData.name}. Designed with intention.
       </p>
     </footer>
   );
 }
 
 function SiteLayout() {
+  const location = useLocation();
+
   return (
     <>
       <Navbar />
-      <main className="page-content"><Outlet /></main>
+      <main className="page-content" key={location.pathname}><Outlet /></main>
       <ContactFooter />
     </>
   );
